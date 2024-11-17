@@ -6,6 +6,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Esta clase es la responsable de manejar la comunicación entre el cliente y el servidor.
+ * Principalmente manda los comandos capturados de la consola al servidor y recibe las respuestas de este.
+ */
 public class Client {
     private final String serverAddress;
     private final int serverPort;
@@ -16,6 +20,11 @@ public class Client {
     }
 
     public String sendCommand(String command) {
+        /**
+         * Creamos la conexión con el servidor utilizando la dirección y el puerto definisods. new Socket(serverAddress, serverPort)
+         * new BufferedReader(new InputStreamReader(socket.getInputStream())) lee las respuestas enviadas por el servidor
+         * new PrintWriter(socket.getOutputStream(), true) envía los comandos al servidor
+         */
         try (
                 Socket socket = new Socket(serverAddress, serverPort);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
